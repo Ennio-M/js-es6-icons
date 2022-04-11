@@ -1,0 +1,40 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    font-size: 50px !important;
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #DDDDDD !important;
+}
+
+header{
+    background-color: #FFFFFF;
+}
+
+header h1{
+    color: #29B1DD;
+    font-size: 1.2em;
+    padding-left: .4em;
+}
+
+.container{
+    height: 100vh;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.icon_container{
+    border-style: outset;
+    border-radius: 10px;
+    text-align: center;
+    background-color: #FFFFFF;
+}
+
+.icon_container h6{
+    font-size: .3em;
+    color: #000000;
+    font-weight: 700;
+}
