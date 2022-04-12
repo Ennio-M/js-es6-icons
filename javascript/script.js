@@ -1,3 +1,4 @@
+// Array di oggetti icone
 const icons = [
 	{
 		name: 'cat',
@@ -112,12 +113,15 @@ const icons = [
 		color: 'blue'
 	}
 ];
+// Array per generare un colore casuale
+const myColor = [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 'A', 'B', 'C', 'D', 'E', 'F'];
 
 // Variabili e impostazione iniziale pagina
 const app = document.getElementById("app");
 const row = document.createElement("div");
 row.classList.add("row", "row-cols-5", "g-5");
 app.append(row);
+changeColor();
 printPage(icons);
 
 // Evento
@@ -153,3 +157,22 @@ function filterBy() {
 function checkType(element) {
     return element.type == type.value || type.value == "all";
 }
+// Funzione per generare un colore casuale
+function getrandomcolor() {
+    let randomColor = "";
+    for(let i = 0; i < 6; i++) {
+        randomColor += myColor[getRndInteger(0, myColor.length - 1)]
+    }
+    return randomColor;
+};
+// Funzione per cambiare colore alle icone
+function changeColor() {
+    icons.forEach((element) => {
+        const randomColor = getrandomcolor();
+        element.color = `#${randomColor}`;
+    })
+}
+// Funzione per generare un numero casuale
+function getRndInteger(min, max) {
+    return Math.floor(Math.random() * (max - min + 1) ) + min;
+  }
