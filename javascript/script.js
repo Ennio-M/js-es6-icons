@@ -121,11 +121,15 @@ const app = document.getElementById("app");
 const row = document.createElement("div");
 row.classList.add("row", "row-cols-5", "g-5");
 app.append(row);
+const typesArray = selectTypes();
 changeColor();
 printPage(icons);
 
-// Evento
+// Generazione select
 const type = document.getElementById("type");
+generateSelect();
+
+//Evento
 type.addEventListener("change", filterBy);
 
 // Funzioni
@@ -175,4 +179,28 @@ function changeColor() {
 // Funzione per generare un numero casuale
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1) ) + min;
-  }
+}
+// Funzione per selezionare i tipi di icone
+function selectTypes() {
+    let typesArray = [];
+    typesArray.push(icons[0]['type']);
+    icons.forEach((element) => {
+        if(element.type != typesArray[typesArray.length - 1]) {
+            typesArray.push(element.type);
+        }
+    })
+    return typesArray;
+}
+// Funzione per generare la select
+function generateSelect() {
+    const option = document.createElement("option");
+    option.setAttribute("value", "all");
+    option.innerHTML = "All";
+    type.append(option);
+    for(let i = 0; i < typesArray.length; i++) {
+        const option = document.createElement("option");
+        option.setAttribute("value", typesArray[i]);
+        option.innerHTML = typesArray[i].charAt(0).toUpperCase() + typesArray[i].slice(1);
+        type.append(option);
+    }
+}
